@@ -1,0 +1,18 @@
+import cv2
+import matplotlib.pyplot as plt
+
+image_path = r"C:\Users\bolla\Downloads\tree_image.jpg"
+image = cv2.imread(image_path)
+
+colors = ('b', 'g', 'r')
+
+for i, color in enumerate(colors):
+    hist = cv2.calcHist([image], [i], None, [256], [0, 256])
+    plt.plot(hist, color=color, label=color.upper())
+
+plt.title("Color Histogram Analysis")
+plt.xlabel("Pixel Intensity")
+plt.ylabel("Frequency")
+plt.xlim([0, 256])
+plt.legend()
+plt.show()
